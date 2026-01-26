@@ -1,13 +1,81 @@
-<!doctype html>
-<html lang="th">
-<head>
-  <meta charset="utf-8">
-  <title>Socku | ARC-SI Projects</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body style="font-family:sans-serif;text-align:center;padding:40px;">
-  <h1>Socku Project Hub</h1>
-  <p>รวมงานวิจัยและ WebGIS ของ ARC-SI</p>
-  <p><a href="/lertor">→ เข้าโครงการ Lertor</a></p>
-</body>
-</html>
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/600.css";
+import "@fontsource/outfit/700.css";
+import { MapPin } from "lucide-react";
+
+const Index = () => {
+  return (
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
+      {/* Background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Radial glow at top */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
+        
+        {/* Side accents */}
+        <div className="absolute top-1/3 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
+        
+        {/* Grid pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `
+              linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+        />
+      </div>
+
+      {/* Main content */}
+      <main className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+        {/* Header section */}
+        <header className="text-center mb-12 md:mb-16">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            ARC-SI Research Platform
+          </div>
+          
+          {/* Title */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient mb-4 md:mb-6 tracking-tight">
+            Socku Project Hub
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
+            รวมงานวิจัยและ WebGIS ของ ARC-SI
+          </p>
+
+          {/* CTA Button */}
+          <a
+            href="https://experience.arcgis.com/experience/cfe63e5e274644d7ac6b4b381cea9fea"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glow-button inline-flex items-center gap-3 text-base md:text-lg group"
+          >
+            <MapPin className="w-5 h-5" />
+            เข้าสู่โครงการ Lertor
+            <svg 
+              className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </header>
+
+        {/* Footer */}
+        <footer className="text-center text-muted-foreground text-sm mt-16">
+          <p>© 2025 ARC-SI · Socku Project Hub</p>
+        </footer>
+      </main>
+    </div>
+  );
+};
+
+export default Index;
