@@ -1,81 +1,211 @@
-import "@fontsource/outfit/400.css";
-import "@fontsource/outfit/500.css";
-import "@fontsource/outfit/600.css";
-import "@fontsource/outfit/700.css";
-import { MapPin } from "lucide-react";
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socku Project Hub - ARC-SI Research Platform</title>
+  <meta name="description" content="รวมงานวิจัยและ WebGIS ของ ARC-SI">
+  <meta name="author" content="ARC-SI">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Socku Project Hub">
+  <meta property="og:description" content="รวมงานวิจัยและ WebGIS ของ ARC-SI">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['Outfit', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            background: 'hsl(0 5% 4%)',
+            foreground: 'hsl(30 25% 95%)',
+            primary: 'hsl(0 72% 45%)',
+            'primary-foreground': 'hsl(30 25% 98%)',
+            muted: 'hsl(0 10% 15%)',
+            'muted-foreground': 'hsl(0 10% 60%)',
+            border: 'hsl(0 15% 18%)',
+            crimson: {
+              DEFAULT: 'hsl(0 72% 45%)',
+              glow: 'hsl(0 80% 50%)',
+              deep: 'hsl(0 60% 25%)',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: radial-gradient(ellipse at top, hsl(0 15% 10%) 0%, hsl(0 5% 4%) 70%);
+      color: hsl(30 25% 95%);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Text gradient for title */
+    .text-gradient {
+      background: linear-gradient(135deg, hsl(30 30% 98%), hsl(30 20% 85%));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Glow button */
+    .glow-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      color: hsl(30 25% 98%);
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, hsl(0 72% 45%), hsl(0 80% 55%));
+      box-shadow: 0 0 30px -5px hsla(0, 80%, 50%, 0.6);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .glow-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px -5px hsla(0, 80%, 50%, 0.8);
+    }
+    
+    .glow-button::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, hsl(0 72% 45%), hsl(0 80% 55%));
+      z-index: -1;
+      opacity: 0;
+      filter: blur(15px);
+      transition: opacity 0.3s;
+    }
+    
+    .glow-button:hover::after {
+      opacity: 0.6;
+    }
+    
+    /* Pulse glow animation */
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    
+    /* Pulse animation for badge dot */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    /* Arrow hover animation */
+    .arrow-icon {
+      transition: transform 0.3s ease;
+    }
+    
+    .glow-button:hover .arrow-icon {
+      transform: translateX(4px);
+    }
+  </style>
+</head>
 
-const Index = () => {
-  return (
-    <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
-      {/* Background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Radial glow at top */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
-        
-        {/* Side accents */}
-        <div className="absolute top-1/3 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
-        
-        {/* Grid pattern overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `
-              linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px'
-          }}
-        />
-      </div>
-
-      {/* Main content */}
-      <main className="relative z-10 container mx-auto px-4 py-16 md:py-24">
-        {/* Header section */}
-        <header className="text-center mb-12 md:mb-16">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            ARC-SI Research Platform
-          </div>
-          
-          {/* Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient mb-4 md:mb-6 tracking-tight">
-            Socku Project Hub
-          </h1>
-          
-          {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
-            รวมงานวิจัยและ WebGIS ของ ARC-SI
-          </p>
-
-          {/* CTA Button */}
-          <a
-            href="https://experience.arcgis.com/experience/cfe63e5e274644d7ac6b4b381cea9fea"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glow-button inline-flex items-center gap-3 text-base md:text-lg group"
-          >
-            <MapPin className="w-5 h-5" />
-            เข้าสู่โครงการ Lertor
-            <svg 
-              className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </header>
-
-        {/* Footer */}
-        <footer className="text-center text-muted-foreground text-sm mt-16">
-          <p>© 2025 ARC-SI · Socku Project Hub</p>
-        </footer>
-      </main>
+<body>
+  <div class="min-h-screen relative overflow-hidden flex items-center justify-center">
+    <!-- Background effects -->
+    <div class="absolute inset-0 pointer-events-none">
+      <!-- Radial glow at top -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full blur-[120px] animate-pulse-glow" style="background: hsla(0, 72%, 45%, 0.1);"></div>
+      
+      <!-- Side accents -->
+      <div class="absolute top-1/3 -left-32 w-64 h-64 rounded-full blur-[80px]" style="background: hsla(0, 72%, 45%, 0.05);"></div>
+      <div class="absolute bottom-1/4 -right-32 w-64 h-64 rounded-full blur-[80px]" style="background: hsla(0, 72%, 45%, 0.05);"></div>
+      
+      <!-- Grid pattern overlay -->
+      <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(hsl(30 25% 95%) 1px, transparent 1px), linear-gradient(90deg, hsl(30 25% 95%) 1px, transparent 1px); background-size: 60px 60px;"></div>
     </div>
-  );
-};
 
-export default Index;
+    <!-- Main content -->
+    <main class="relative z-10 container mx-auto px-4 py-16 md:py-24">
+      <!-- Header section -->
+      <header class="text-center mb-12 md:mb-16">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style="background: hsla(0, 72%, 45%, 0.1); border: 1px solid hsla(0, 72%, 45%, 0.2); color: hsl(0 72% 45%);">
+          <span class="w-2 h-2 rounded-full animate-pulse" style="background: hsl(0 72% 45%);"></span>
+          ARC-SI Research Platform
+        </div>
+        
+        <!-- Title -->
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient mb-4 md:mb-6 tracking-tight">
+          Socku Project Hub
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color: hsl(0 10% 60%);">
+          รวมงานวิจัยและ WebGIS ของ ARC-SI
+        </p>
+
+        <!-- CTA Button -->
+        <a
+          href="https://experience.arcgis.com/experience/cfe63e5e274644d7ac6b4b381cea9fea"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="glow-button text-base md:text-lg"
+        >
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+          เข้าสู่โครงการ Lertor
+          <svg 
+            class="w-5 h-5 arrow-icon" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </header>
+
+      <!-- Footer -->
+      <footer class="text-center text-sm mt-16" style="color: hsl(0 10% 60%);">
+        <p>© 2025 ARC-SI · Socku Project Hub</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
