@@ -7,23 +7,18 @@
   <meta name="description" content="รวมงานวิจัยและ WebGIS ของ ARC-SI">
   <meta name="author" content="ARC-SI">
   
-  <!-- Open Graph -->
   <meta property="og:title" content="Socku Project Hub">
   <meta property="og:description" content="รวมงานวิจัยและ WebGIS ของ ARC-SI">
   <meta property="og:type" content="website">
   
-  <!-- Google Fonts - Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   
-  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       theme: {
@@ -144,67 +139,77 @@
 
 <body>
   <div class="min-h-screen relative overflow-hidden flex items-center justify-center">
-    <!-- Background effects -->
     <div class="absolute inset-0 pointer-events-none">
-      <!-- Radial glow at top -->
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full blur-[120px] animate-pulse-glow" style="background: hsla(0, 72%, 45%, 0.1);"></div>
       
-      <!-- Side accents -->
       <div class="absolute top-1/3 -left-32 w-64 h-64 rounded-full blur-[80px]" style="background: hsla(0, 72%, 45%, 0.05);"></div>
       <div class="absolute bottom-1/4 -right-32 w-64 h-64 rounded-full blur-[80px]" style="background: hsla(0, 72%, 45%, 0.05);"></div>
       
-      <!-- Grid pattern overlay -->
       <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(hsl(30 25% 95%) 1px, transparent 1px), linear-gradient(90deg, hsl(30 25% 95%) 1px, transparent 1px); background-size: 60px 60px;"></div>
     </div>
 
-    <!-- Main content -->
     <main class="relative z-10 container mx-auto px-4 py-16 md:py-24">
-      <!-- Header section -->
       <header class="text-center mb-12 md:mb-16">
-        <!-- Badge -->
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style="background: hsla(0, 72%, 45%, 0.1); border: 1px solid hsla(0, 72%, 45%, 0.2); color: hsl(0 72% 45%);">
           <span class="w-2 h-2 rounded-full animate-pulse" style="background: hsl(0 72% 45%);"></span>
           ARC-SI Research Platform
         </div>
         
-        <!-- Title -->
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient mb-4 md:mb-6 tracking-tight">
           Socku Project Hub
         </h1>
         
-        <!-- Subtitle -->
         <p class="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color: hsl(0 10% 60%);">
           รวมงานวิจัยและ WebGIS ของ ARC-SI
         </p>
 
-        <!-- CTA Button -->
-        <a
-          href="https://experience.arcgis.com/experience/cfe63e5e274644d7ac6b4b381cea9fea"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="glow-button text-base md:text-lg"
-        >
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
-          เข้าสู่โครงการ Lertor
-          <svg 
-            class="w-5 h-5 arrow-icon" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
+        <div class="flex flex-col md:flex-row gap-4 justify-center items-center w-full">
+            
+            <a
+            href="https://experience.arcgis.com/experience/cfe63e5e274644d7ac6b4b381cea9fea"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glow-button text-base md:text-lg w-full md:w-auto justify-center"
+            >
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+            เข้าสู่โครงการ Lertor
+            <svg 
+                class="w-5 h-5 arrow-icon" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+            >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+            </a>
+
+            <a
+            href="https://experience.arcgis.com/experience/b384dffbe5d44608ad2ce619d89c0c2f/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glow-button text-base md:text-lg w-full md:w-auto justify-center"
+            >
+            <i data-lucide="mountain" class="w-5 h-5"></i>
+            เข้าสู่โครงการ Angkhang
+            <svg 
+                class="w-5 h-5 arrow-icon" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+            >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+            </a>
+
+        </div>
       </header>
 
-      <!-- Footer -->
       <footer class="text-center text-sm mt-16" style="color: hsl(0 10% 60%);">
         <p>© 2025 ARC-SI · Socku Project Hub</p>
       </footer>
     </main>
   </div>
 
-  <!-- Initialize Lucide Icons -->
   <script>
     lucide.createIcons();
   </script>
